@@ -85,5 +85,7 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Kita memakai RwLock karena efisien untuk operasi yang sering membaca data. Banyak thread bisa membaca secara bersamaan selama tidak ada yang menulis. Kita tidak memakai Mutex bersifat eksklusif (hanya 1 thread yang bisa akses, baik baca atau tulis). Dalam kasus list_all, RwLock lebih unggul karena mengizinkan akses baca paralel.
+2. Karena Java menggunakan Garbage Collector, sementara Rust menggunakan Ownership & Borrowing. Rust melarang mutasi variabel statis secara bebas untuk mencegah Data Race pada level kompilasi. Variabel static di Rust juga harus aman diakses antar thread. Rust mewajibkan penggunaan wrapper seperti RwLock atau Mutex agar memori tetap aman.
 
 #### Reflection Subscriber-2
