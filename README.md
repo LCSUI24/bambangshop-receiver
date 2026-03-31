@@ -89,3 +89,7 @@ This is the place for you to write reflections:
 2. Karena Java menggunakan Garbage Collector, sementara Rust menggunakan Ownership & Borrowing. Rust melarang mutasi variabel statis secara bebas untuk mencegah Data Race pada level kompilasi. Variabel static di Rust juga harus aman diakses antar thread. Rust mewajibkan penggunaan wrapper seperti RwLock atau Mutex agar memori tetap aman.
 
 #### Reflection Subscriber-2
+1. Hanya sedikit melihat lihat bagaimana rust bekerja, apakah file filenya mirip dengan java/python.
+2. Pola Observer sangat memudahkan penambahan subscriber. Publisher tidak perlu tahu detail spesifik dari setiap subscriber, hanya memerlukan menyimpan daftar URL endpoint dan melakukan broadcast ke semuanya secara seragam.
+Namun, Jika daftar subscriber hanya disimpan di dalam memori masing-masing instance Main (in-memory state), maka instance Main yang satu tidak akan tahu daftar subscriber yang terdaftar di instance Main lainnya. Dibutuhkan penyimpanan eksternal atau database terpusat (seperti PostgreSQL) agar tersinkronisasi.
+3. Saya mencoba sedikit (membuat test diluar yang dikasih) hanya untuk mengetahui cara pembuatan dan pengujian ini.
